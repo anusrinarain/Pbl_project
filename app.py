@@ -148,7 +148,7 @@ if selected_page == "EDA & Outliers":
     st.header("Exploratory Analysis")
     df = st.session_state.df_cleaned
     
-    tab1, tab2, tab3 = st.tabs(["📊 Distributions & Importance", "🔥 Correlations", "⚠️ Outliers (Detailed)"])
+    tab1, tab2, tab3 = st.tabs(["Distributions & Importance", "Correlations", "Outliers (Detailed)"])
     
     with tab1:
         c1, c2 = st.columns([1,3])
@@ -377,11 +377,11 @@ if selected_page == "Risk & Simulation Lab":
     target = st.session_state.target_name
     X_str = df.drop(columns=[target])
     c1, c2 = st.columns(2)
-    if c1.button("🛡️ Force Safe Values"):
+    if c1.button("Force Safe Values"):
         st.session_state.force_safe = True
         st.session_state.force_risk = False
         st.rerun()
-    if c2.button("⚡ Force Risk Values"):
+    if c2.button("Force Risk Values"):
         st.session_state.force_safe = False
         st.session_state.force_risk = True
         st.rerun()
@@ -424,9 +424,9 @@ if selected_page == "Risk & Simulation Lab":
         
         # CLEAN PROBABILITY BAR (Replaces confusing gauge)
         st.progress(prob)
-        if prob > 0.7: st.error("⚠️ HIGH RISK DETECTED")
-        elif prob > 0.4: st.warning("⚠️ MODERATE RISK")
-        else: st.success("✅ LOW RISK / SAFE")
+        if prob > 0.7: st.error("HIGH RISK DETECTED")
+        elif prob > 0.4: st.warning("MODERATE RISK")
+        else: st.success("LOW RISK / SAFE")
         
         # GEMINI EXPLANATION BUTTON
         if st.button("Ask AI to Explain This Result"):
